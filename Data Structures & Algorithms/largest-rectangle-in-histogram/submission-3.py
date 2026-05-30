@@ -1,0 +1,40 @@
+# 暴力
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        res = 0
+
+        for i in range(len(heights)):
+            left = i
+            right = i
+
+            # 向左侧遍历：寻找第一个矮一级的柱子
+            for _ in range(left, -1, -1):
+                if heights[left] < heights[i]:
+                    break
+                left -= 1
+            
+            for _ in range(right, len(heights)):
+                if heights[right] < heights[i]:
+                    break
+                right += 1
+            
+            w = right - left - 1
+            h = heights[i]
+            res = max(res, w * h)
+        
+        return res
+
+
+# 暴力
+class Solution:
+    def largestRectangleArea(self, heights: List[int]) -> int:
+        n = len(heights)
+        max_area = 0
+        
+        for i in range(n):
+            min_height = float('inf')
+            for j in range(i, n):
+                min_height = min(min_height, heights[j])  # 找到最小高度
+                max_area = max(max_area, min_height * (j - i + 1))  # 计算面积
+        
+        return max_area
