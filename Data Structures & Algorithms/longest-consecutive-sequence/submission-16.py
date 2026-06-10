@@ -1,0 +1,159 @@
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+
+        nums = list(set(nums))
+        nums.sort()
+        i, j = 0, 1
+        res, length = 0, 1
+
+        while i < len(nums) and j < len(nums):
+            if nums[j] == nums[j-1] + 1:
+                length += 1
+                j += 1
+            else:
+                res = max(length, res)
+                i = j
+                j = i + 1
+                length = 1
+        res = max(length, res)
+        return res
+
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        nums = list(set(nums))
+        nums.sort()
+
+        res, length = 0, 1
+        i, j = 0, 1
+        while i < len(nums) and j < len(nums):
+            if nums[j] == nums[j - 1] + 1:
+                length += 1
+                j += 1
+            else:
+                res = max(res, length)
+                i = j
+                j = i + 1
+                length = 1
+        res = max(res, length)
+        return res
+
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+
+        nums = list(set(nums))
+        nums.sort()
+        i, j = 0, 1
+        length = 1
+        res = 1
+
+        while j < len(nums):
+            if nums[j] == nums[j - 1] + 1:
+                length += 1
+                j += 1
+            else:
+                res = max(res, length)
+                i = j
+                j = i + 1
+                length = 1
+        res = max(res, length)
+        return res
+
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        nums = list(set(nums))
+        nums.sort()
+        res = 1
+        i, j = 0, 1
+
+        while j < len(nums):
+            if nums[j] == nums[j - 1] + 1:
+                res = max(res, j - i + 1)
+            else:
+                i = j
+            j += 1
+        return res
+
+
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        res = 0
+        nums.sort()
+
+        cur, length = nums[0], 0
+        i = 0
+        while i < len(nums):
+            if cur != nums[i]:
+                cur = nums[i]
+                length = 0
+            
+            while i < len(nums) and nums[i] == cur:
+                i += 1
+            
+            length += 1
+            cur += 1
+            res = max(res, length)
+        
+        return res
+
+
+
+class Solution:
+    def longestConsecutive(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        
+        nums.sort()
+        cur = nums[0]
+        length = 1
+        res = 0
+
+        for i in range(1, len(nums)):
+            print(cur, length)
+            if nums[i] == cur + 1:
+                cur = nums[i]
+                length += 1
+            elif nums[i] == cur:
+                continue
+            else:
+                res = max(res, length)
+                cur = nums[i]
+                length = 1
+        
+        res = max(res, length)
+        return res
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
